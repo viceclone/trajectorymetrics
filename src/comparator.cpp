@@ -122,12 +122,12 @@ TrajectoryComparator::getClosestTrajectories(const std::multimap<double, Traject
     return std::move(results);
 }
 
-std::vector<TrajectoryPtr> TrajectoryComparator::getClosestTrajectoryLength(TrajectoryPtr refTrajectory, int n) const
+std::vector<TrajectoryPtr> TrajectoryComparator::getClosestTrajectoryInLength(TrajectoryPtr refTrajectory, int n) const
 {
     return getClosestTrajectories(m_lengthTrajectoryMap, refTrajectory, refTrajectory->length(), n);
 }
 
-std::vector<TrajectoryPtr> TrajectoryComparator::getClosestTrajectorySpeed(TrajectoryPtr refTrajectory, int n) const
+std::vector<TrajectoryPtr> TrajectoryComparator::getClosestTrajectoryInSpeed(TrajectoryPtr refTrajectory, int n) const
 {
     return getClosestTrajectories(m_speedTrajectoryMap, refTrajectory, refTrajectory->speed(), n);
 }

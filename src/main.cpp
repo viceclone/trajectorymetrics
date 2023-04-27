@@ -75,7 +75,7 @@ void getClosestTrajectoriesInLengthToReference()
         int n;
         std::cout << "N? ";
         std::cin >> n;
-        auto closest = comparator.getClosestTrajectoryLength(referenceTrajectory, n);
+        auto closest = comparator.getClosestTrajectoryInLength(referenceTrajectory, n);
         std::cout << "---------RESULT---------" << std::endl;
         int count = 0;
         for (auto closeTrajectory : closest)
@@ -98,7 +98,7 @@ void getClosestTrajectoriesInSpeedToReference()
         int n;
         std::cout << "N? ";
         std::cin >> n;
-        auto closest = comparator.getClosestTrajectorySpeed(referenceTrajectory, n);
+        auto closest = comparator.getClosestTrajectoryInSpeed(referenceTrajectory, n);
         std::cout << "---------RESULT---------" << std::endl;
         int count = 0;
         for (auto closeTrajectory : closest)
