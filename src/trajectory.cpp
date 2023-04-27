@@ -1,12 +1,68 @@
 #include "trajectory.hpp"
 #include <cmath>
+#include <sstream>
+#include <iostream>
 
-double Trajectory::length()
+void Trajectory::initFromCLI()
+{   
+    int n;
+    std::cout << "N points: ";
+    std::cin >> n;
+    for (int i=0; i<n; i++)
+    {
+        int t, x, y;
+
+        std::cout << "--- Point " << i << " ---  " << std::endl;
+        std::cout << ">> t? ";
+        std::cin >> t;
+
+        std::cout << ">> x? ";
+        std::cin >> x;
+
+        std::cout << ">> y? ";
+        std::cin >> y;
+        addPoint(t, x, y);
+    }
+    computeLengthAndSpeed();
+}
+
+std::string Trajectory::toString(bool verbose)
+{
+    std::stringstream ss;
+    ss << ">> INDEX: " << m_index << std::endl;
+    ss << ">> Trajectory length: " << m_length << std::endl;
+    ss << ">> Trajectory speed : " << m_speed << std::endl;
+    if (verbose)
+    {
+        for (auto [t, point] : m_points)
+        {
+            ss << "  - T: " << t << ".  Point: (" << point.first << " | " << point.second << ")" << std::endl;
+        }
+    }
+    return ss.str();
+}
+
+void Trajectory::setIndex(int index)
+{
+    m_index = index;
+}
+
+int Trajectory::index() const
+{
+    return m_index;
+}
+
+const std::map<int, PointType>& Trajectory::points() const
+{
+    return m_points;
+}
+
+double Trajectory::length() const
 {
     return m_length;
 }
 
-double Trajectory::speed()
+double Trajectory::speed() const
 {
     return m_speed;
 }
